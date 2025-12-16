@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_app/presentation/widget/edit_note_view_body.dart';
+import 'package:hive_app/feature/presentation/widget/edit_note_view_body.dart';
 
 class EditNoteView extends StatelessWidget {
   const EditNoteView({super.key});

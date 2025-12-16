@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive_app/presentation/view/notes_view.dart';
+import 'package:hive_app/feature/presentation/view/notes_view.dart';
 
 void main() {
   runApp(const MyApp());

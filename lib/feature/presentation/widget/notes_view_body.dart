@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hive_app/presentation/widget/custom_appBar.dart';
-import 'package:hive_app/presentation/widget/notes_list_view.dart';
+import 'package:hive_app/feature/presentation/widget/custom_appBar.dart';
+import 'package:hive_app/feature/presentation/widget/notes_list_view.dart';
 
 class NotesViewBody extends StatelessWidget {
   const NotesViewBody({super.key});
