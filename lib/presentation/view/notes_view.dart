@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hive_app/presentation/widget/notes_view_body.dart';
+ import 'package:hive_app/presentation/widget/add_note_bottom_sheet.dart';
+ import 'package:hive_app/presentation/widget/notes_view_body.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
@@ -14,7 +15,7 @@ class NotesView extends StatelessWidget {
             showModalBottomSheet(
                 context: context,
                 builder: (context) {
-                  return Container();
+                  return AddNoteBottomSheet();
                 });
           },
           child: const Icon(Icons.add),
@@ -22,13 +23,5 @@ class NotesView extends StatelessWidget {
         body: NotesViewBody(),
       ),
     );
-  }
-}
-class AddNoteBottomSheet extends StatelessWidget {
-  const AddNoteBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return   Container();
   }
 }
