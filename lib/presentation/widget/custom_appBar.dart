@@ -3,18 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_app/presentation/widget/custom_search_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key , required this.title , required this.icon});
+
+  final String title;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Text(
-          "Notes",
+          title,
           style: TextStyle(fontSize: 28.sp, color: Colors.white),
         ),
         Spacer(),
-        const CustomSearchIcon(),
+        CustomSearchIcon(icon: icon),
       ],
     );
   }
