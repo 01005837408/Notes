@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_app/core/constant.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
+  const CustomButton({super.key, required this.onPressed});
+
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,6 @@ class CustomButton extends StatelessWidget {
           
         ),
       ),
-      onPressed: (){}, child: Text('Add Note',style: TextStyle(color: Colors.black, fontSize: 20.sp),));
+      onPressed: onPressed, child: Text('Add Note',style: TextStyle(color: Colors.black, fontSize: 20.sp),));
   }
 }
