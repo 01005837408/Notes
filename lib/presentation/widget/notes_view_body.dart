@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_app/presentation/widget/custom_appBar.dart';
-import 'package:hive_app/presentation/widget/note_item.dart';
+import 'package:hive_app/presentation/widget/notes_list_view.dart';
 
 class NotesViewBody extends StatelessWidget {
   const NotesViewBody({super.key});
@@ -15,7 +14,7 @@ class NotesViewBody extends StatelessWidget {
         children: [
           const CustomAppBar(),
           SizedBox(height: 30.h),
-          NoteItem(),
+          Flexible(child: const NotesListView()),
         ],
       ),
     );
