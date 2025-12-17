@@ -50,30 +50,37 @@ class _NotesFormState extends State<NotesForm> {
               SizedBox(
                 height: 32.h,
               ),
-              CustomButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    NoteModel addNote = NoteModel(
-                      date: DateTime.now().toString(),
-                      title: title!,
-                      description: description!,
-                      color: Colors.red.value,
-                    );
-                    BlocProvider.of<AddNoteCubit>(context).addNote(
-                     addNote
-                    );
-                    debugPrint(addNote.toString());
-                    
-                  }else{
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
-                  }
+              BlocBuilder<AddNoteCubit, AddNoteState>(
+                builder: (context, state) {
+                  return state is AddNoteStateLoading ? SizedBox(
+                    height: 24, width: 24,
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      
+                    ),
+                  ) : CustomButton(
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        NoteModel addNote = NoteModel(
+                          date: DateTime.now().toString(),
+                          title: title!,
+                          description: description!,
+                          color: Colors.red.value,
+                        );
+                        BlocProvider.of<AddNoteCubit>(context).addNote(addNote);
+                        debugPrint(addNote.toString());
+                      } else {
+                        autovalidateMode = AutovalidateMode.always;
+                        setState(() {});
+                      }
+                    },
+                  );
                 },
               ),
-              SizedBox(
-                height: 16.h,
-              ),
+              // SizedBox(
+              //   height: 16.h,
+              // ),
             ],
           ),
         ),
