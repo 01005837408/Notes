@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive_app/feature/data/maneger/display_note/note_cubit.dart';
 import 'package:hive_app/feature/data/model/note_model.dart';
 import 'package:hive_app/feature/presentation/view/edit_note_view.dart';
 
@@ -11,7 +13,11 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => EditNoteView(),));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditNoteView(),
+            ));
       },
       child: Container(
         padding: EdgeInsets.only(
@@ -32,17 +38,19 @@ class NoteItem extends StatelessWidget {
                 note.title,
                 style: TextStyle(fontSize: 28.sp, color: Colors.black),
               ),
-      
               subtitle: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
-                    note.description,
+                  note.description,
                   style: TextStyle(
                       fontSize: 18.sp, color: Colors.black.withOpacity(0.4)),
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  BlocProvider.of<NoteCubit>(context).deleteItem(note);
+                 // BlocProvider.of<NoteCubit>(context).fetchAllNotes();
+                },
                 icon: Icon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,

@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_app/core/bloc_observer.dart';
 import 'package:hive_app/core/constant.dart';
+import 'package:hive_app/feature/data/maneger/display_note/note_cubit.dart';
 import 'package:hive_app/feature/data/model/note_model.dart';
 import 'package:hive_app/feature/presentation/view/notes_view.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
@@ -25,13 +26,16 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(360, 690),
         builder: (context, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              brightness: Brightness.dark,
-              fontFamily: 'Poppins',
+          return BlocProvider<NoteCubit>(
+            create: (context) => NoteCubit(),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                brightness: Brightness.dark,
+                fontFamily: 'Poppins',
+              ),
+              home: const NotesView(),
             ),
-            home: const NotesView(),
           );
         });
   }

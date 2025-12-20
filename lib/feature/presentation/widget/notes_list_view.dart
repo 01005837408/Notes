@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_app/core/constant.dart';
 import 'package:hive_app/feature/data/maneger/display_note/note_cubit.dart';
 import 'package:hive_app/feature/data/model/note_model.dart';
 import 'package:hive_app/feature/presentation/widget/note_item.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class NotesListView extends StatefulWidget {
   const NotesListView({super.key});
@@ -20,9 +23,15 @@ class _NotesListViewState extends State<NotesListView> {
 
   @override
   Widget build(BuildContext context) {
-    List<NoteModel> notes = BlocProvider.of<NoteCubit>(context).notes;
-    return BlocBuilder<NoteCubit, NoteState>(
-      builder: (context, state) {
+ //   List<NoteModel> notes = BlocProvider.of<NoteCubit>(context).notes;
+    return ValueListenableBuilder (
+      valueListenable: Hive.box<NoteModel>(kNotesBox).listenable(),
+      builder: (context,Box<NoteModel> box, _) {
+         final notes = box.values.toList();   // get all stored notes
+
+    if (notes.isEmpty) {
+      return const Center(child: Text('No notes yet'));
+    }
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: ListView.builder(

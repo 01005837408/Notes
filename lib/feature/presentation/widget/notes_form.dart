@@ -68,20 +68,12 @@ class _NotesFormState extends State<NotesForm> {
                       : CustomButton(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              DateTime now = DateTime.now();
-
-// Create a DateFormat object with the desired pattern
-                              DateFormat formatter =
-                                  DateFormat('dd-MM-yyyy');
-
-// Format the DateTime object into a string
-                              String formattedDate = formatter.format(now);
                               formKey.currentState!.save();
                               NoteModel addNote = NoteModel(
-                                date: formattedDate,
+                                date: getFormatedDate(),
                                 title: title!,
                                 description: description!,
-                                color: Colors.red.value,
+                                color: Colors.yellow.value,
                               );
                               BlocProvider.of<AddNoteCubit>(context)
                                   .addNote(addNote);
@@ -102,5 +94,12 @@ class _NotesFormState extends State<NotesForm> {
         ),
       ),
     );
+  }
+
+  String getFormatedDate() {
+    DateTime now = DateTime.now();
+
+    DateFormat formatter = DateFormat('dd-MM-yyyy');
+    return formatter.format(now);
   }
 }
