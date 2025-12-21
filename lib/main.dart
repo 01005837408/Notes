@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive_app/core/bloc_observer.dart';
+import 'package:hive_app/core/helper/bloc_observer.dart';
 import 'package:hive_app/core/constant.dart';
 import 'package:hive_app/feature/data/maneger/display_note/note_cubit.dart';
 import 'package:hive_app/feature/data/model/note_model.dart';

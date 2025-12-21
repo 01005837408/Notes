@@ -21,7 +21,6 @@ class _NotesFormState extends State<NotesForm> {
   String? _title;
   String? _description;
   AutovalidateMode _autoValidate = AutovalidateMode.disabled;
-  int _selectedColor = Colors.yellow.value;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class _NotesFormState extends State<NotesForm> {
   Widget _buildTitleField() {
     return CustomTextField(
       hintText: 'Title',
-      onSaved: (value) => _title = value,
+     // onSaved: (value) => _title = value,
     );
   }
 
@@ -66,7 +65,7 @@ class _NotesFormState extends State<NotesForm> {
     return CustomTextField(
       hintText: 'Description',
       maxLines: 5,
-      onSaved: (value) => _description = value,
+      //onSaved: (value) => _description = value,
     );
   }
 
